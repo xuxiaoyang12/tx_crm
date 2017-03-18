@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mxia on 2017/3/18.
@@ -27,6 +29,7 @@ public class NoticeServiceImpl implements NoticeService {
      */
     @Override
     public void saveNewNotice(User user, Notice notice) {
+
         notice.setRealName(user.getRealName());
 
         notice.setCreateTime(new Timestamp(new DateTime().getMillis()).toString());
@@ -39,5 +42,33 @@ public class NoticeServiceImpl implements NoticeService {
         }
 
 
+    }
+
+    /**
+     * 查询公告列表
+     * @param map
+     * @return
+     */
+    @Override
+    public List<Notice> findNoticeByQueryname(Map<String, Object> map) {
+        return noticeMapper.findNoticeByQueryname(map);
+    }
+
+    /*
+    公告总数
+     */
+    @Override
+    public Long countOfNotice() {
+        return noticeMapper.countOfNotice();
+    }
+
+    /**
+     * 通过公告id 查询公共详情
+     * @param noticeId
+     * @return
+     */
+    @Override
+    public Notice findNoticeById(Integer noticeId) {
+        return noticeMapper.fingNoticeById(noticeId);
     }
 }

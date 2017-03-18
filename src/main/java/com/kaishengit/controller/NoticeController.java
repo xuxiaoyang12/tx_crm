@@ -1,5 +1,6 @@
 package com.kaishengit.controller;
 
+import com.google.common.collect.Maps;
 import com.kaishengit.dto.DataBaseResult;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.pojo.Notice;
@@ -8,11 +9,16 @@ import com.kaishengit.service.NoticeService;
 import com.kaishengit.util.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 公告控制器
@@ -63,17 +69,35 @@ public class NoticeController {
     }
 
     @RequestMapping("/load")
+    @ResponseBody
     public DataBaseResult load(HttpServletRequest request) {
         //获取dataBase的传入的参数
         String draw = request.getParameter("draw");
         String start = request.getParameter("start");
         String length = request.getParameter("length");
 
+        Map<String,Object> map = Maps.newHashMap();
+        map.put("draw",draw);
+        map.put("start",start);
+        map.put("length",length);
+
+        //通过数据查询公告列表
+        List<Notice>  noticeList = noticeService.findNoticeByQueryname(map);
+
+        //查询公告列表总数
+        Long count = noticeService.countOfNotice();
 
 
+        return  new DataBaseResult(draw,count,count,noticeList);
+    }
 
+    @RequestMapping("/{id}")
+    public String findNoticeById(@PathVariable("id") Integer noticeId, Model model) {
 
-        return  null;
+        Notice notice = noticeService.findNoticeById(noticeId);
+        model.addAttribute("notice",notice);
+
+        return "notice/detail";
     }
 
 }

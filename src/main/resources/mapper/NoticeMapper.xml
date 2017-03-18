@@ -7,4 +7,14 @@
         insert into t_notice (title,context,create_time,user_id,real_name)
         values (#{title},#{context},#{createTime},#{userId},#{realName})
     </insert>
+    <select id="findNoticeByQueryname" resultType="com.kaishengit.pojo.Notice">
+        select * from t_notice order by id DESC
+        limit ${start},${length}
+    </select>
+    <select id="countOfNotice" resultType="java.lang.Long">
+        select count(*) from t_notice
+    </select>
+    <select id="fingNoticeById" resultType="com.kaishengit.pojo.Notice">
+        select * from t_notice where id = #{noticeId}
+    </select>
 </mapper>

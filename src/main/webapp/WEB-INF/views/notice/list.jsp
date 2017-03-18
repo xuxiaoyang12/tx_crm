@@ -122,10 +122,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     return "<a href='/notice/"+row.id+"'>"+row.title+"</a>"
                 }},
                 {"data":function(row){
-                    var day = moment(row.createtime).format("YYYY-MM-DD HH:mm");
+                    var day = moment(row.createTime).format("YYYY-MM-DD HH:mm");
                     return day;
                 }},
-                {"data":"realname"}
+                {"data":"realName"}
             ],
             "language": { //定义中文
                 "search": "请输入书籍名称:",
