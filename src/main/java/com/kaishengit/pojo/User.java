@@ -12,6 +12,15 @@ public class User {
     private Integer state;
     private String createTime;
     private String weixin;
+    private String realName;
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
     public Integer getRoleId() {
         return roleId;
