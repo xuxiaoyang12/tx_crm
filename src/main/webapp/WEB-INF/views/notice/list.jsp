@@ -104,8 +104,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/static/dist/js/app.min.js"></script>
 
 <%--添加database插件依赖--%>
+<script src="/static/plugins/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/static/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
-
+<script src="/static/plugins/moment/moment.min.js"></script>
 <script>
     $(function () {
 
@@ -115,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             serverSide:true,//
             ajax:"/notice/load",//请求的url
             ordering:false,
-            "autoWidth": false,
+            "autoWidth": false,//自动调整
             columns:[
                 {"data":function(row){
                     return "<a href='/notice/"+row.id+"'>"+row.title+"</a>"

@@ -1,5 +1,6 @@
 package com.kaishengit.controller;
 
+import com.kaishengit.dto.DataBaseResult;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.pojo.Notice;
 import com.kaishengit.pojo.User;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 公告控制器
@@ -57,6 +60,20 @@ public class NoticeController {
         }
         redirectAttributes.addFlashAttribute("message","发布成功");
         return "redirect:/notice";
+    }
+
+    @RequestMapping("/load")
+    public DataBaseResult load(HttpServletRequest request) {
+        //获取dataBase的传入的参数
+        String draw = request.getParameter("draw");
+        String start = request.getParameter("start");
+        String length = request.getParameter("length");
+
+
+
+
+
+        return  null;
     }
 
 }
