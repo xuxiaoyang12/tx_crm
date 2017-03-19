@@ -41,7 +41,7 @@
     </select>
     <select id="findUserById" resultType="com.kaishengit.pojo.User">
         select t_user.*,t_role.id As 'role.id',t_role.role_name as 'role.roleName' from t_user
-        left join t_role on t_user.id = t_role.id
+        left join t_role on t_user.role_id = t_role.id
         where t_user.id = #{userId}
     </select>
     <select id="findUserLogByQueryName" resultType="com.kaishengit.pojo.UserLog">

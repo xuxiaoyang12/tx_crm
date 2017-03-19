@@ -364,7 +364,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $("#edit_password").val(result.data.password);
                     $("#edit_real_name").val(result.data.realName);
                     $("#edit_weixin").val(result.data.weixin);
-                    $("#edit_role_id").val(result.data.role.id);
+                    $("#edit_role_id").val(result.data.roleId);
                     $("#edit_state").val(result.data.state);
 
                     $("#editModal").modal({
