@@ -14,6 +14,16 @@ public class User {
     private String weixin;
     private String realName;
 
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public String getRealName() {
         return realName;
     }

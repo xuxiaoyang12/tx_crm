@@ -24,6 +24,13 @@
             <DIV class="initial_right_hand" id="right_hand"></DIV>
         </DIV>
         <form action="/login" method="post" id="subForm">
+
+                <c:if test="${not empty message}" >
+                    <div class="alert alert-error">
+                        ${message}
+                    </div>
+                </c:if>
+
             <P style="padding: 30px 0px 10px; position: relative;">
                 <SPAN class="u_logo"></SPAN>
                 <INPUT class="ipt" name="username" type="text" placeholder="请输入用户名或邮箱" value="">
