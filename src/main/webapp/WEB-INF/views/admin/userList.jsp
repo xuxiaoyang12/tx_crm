@@ -30,6 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="/static/dist/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="/static/plugins/layer/skin/default/layer.css">
     <%--database--%>
     <link rel="stylesheet" href="/static/plugins/datatables/css/dataTables.bootstrap.min.css">
 </head>
@@ -219,6 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/static/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
 <script src="/static/plugins/moment/moment.min.js"></script>
 <script src="/static/plugins/validate/jquery.validate.min.js"></script>
+<script src="/static/plugins/layer/layer.js"></script>
 
 <script>
     $(function() {
@@ -427,6 +429,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
         });
 
+        //重置密码
+        $(document).delegate(".resetPassword","click",function(){
+            var id = $(this).attr("rel");
+            layer.confirm("确定要重置密码吗？",function(){
+                $.get("/user/reset/"+id+".json").done(function (result) {
+                    if(result.state == 'success') {
+                        layer.msg("密码重置成功");
+                    }else{
+                        layer.msg(result.message);
+                    }
+                }).error(function(){
+                    layer.msg("服务器错误")
+                })
+            });
+
+
+        })
 
     })
 

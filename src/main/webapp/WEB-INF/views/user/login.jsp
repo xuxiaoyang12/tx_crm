@@ -33,11 +33,11 @@
 
             <P style="padding: 30px 0px 10px; position: relative;">
                 <SPAN class="u_logo"></SPAN>
-                <INPUT class="ipt" name="username" type="text" placeholder="请输入用户名或邮箱" value="">
+                <INPUT class="ipt" name="username" value="rose" type="text" placeholder="请输入用户名或邮箱" value="">
             </P>
             <P style="position: relative;">
                 <SPAN class="p_logo"></SPAN>
-                <INPUT class="ipt" name="password" id="password" type="password" placeholder="请输入密码" value="">
+                <INPUT class="ipt" name="password" value="123123" id="password" type="password" placeholder="请输入密码" value="">
             </P>
             <DIV style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
                 <P style="margin: 0px 35px 20px 45px;">

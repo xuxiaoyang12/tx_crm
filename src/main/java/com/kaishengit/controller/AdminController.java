@@ -35,10 +35,6 @@ public class AdminController {
     public String list(Model model) {
         //获取角色列表
         List<Role> roleList = userService.findAllRole();
-        for(Role role : roleList) {
-            System.out.println(role.getRoleName());
-        }
-
        model.addAttribute("roleList",roleList);
         return "admin/userList";
     }

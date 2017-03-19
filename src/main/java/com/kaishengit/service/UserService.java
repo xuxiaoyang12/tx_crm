@@ -2,6 +2,7 @@ package com.kaishengit.service;
 
 import com.kaishengit.pojo.Role;
 import com.kaishengit.pojo.User;
+import com.kaishengit.pojo.UserLog;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,4 +29,12 @@ public interface UserService {
     void saveNewUser(User user);
 
     void update(User user);
+
+    List<UserLog> findUserLogByQueryName(Map<String, Object> queryName);
+
+    Long countUserLog();
+
+    void saveUserLog(UserLog userLog);
+
+    void resetPasswordByUserId(Integer userId);
 }

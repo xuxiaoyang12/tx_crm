@@ -2,6 +2,7 @@ package com.kaishengit.mapper;
 
 import com.kaishengit.pojo.Role;
 import com.kaishengit.pojo.User;
+import com.kaishengit.pojo.UserLog;
 
 import java.util.List;
 import java.util.Map;
@@ -29,4 +30,12 @@ public interface UserMapper {
     void save(User user);
 
     void update(User user);
+
+    List<UserLog> findUserLogByQueryName(Map<String, Object> queryName);
+
+    Long countUserLog();
+
+    void saveUserLog(UserLog userLog);
+
+
 }

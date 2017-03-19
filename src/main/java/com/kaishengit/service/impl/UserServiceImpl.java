@@ -4,6 +4,7 @@ import com.kaishengit.exception.ServiceException;
 import com.kaishengit.mapper.UserMapper;
 import com.kaishengit.pojo.Role;
 import com.kaishengit.pojo.User;
+import com.kaishengit.pojo.UserLog;
 import com.kaishengit.service.UserService;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,44 @@ public class UserServiceImpl implements UserService {
 
             userMapper.update(user);
 
+    }
+
+    /**
+     * 获取日志列表
+     * @param queryName
+     * @return
+     */
+    @Override
+    public List<UserLog> findUserLogByQueryName(Map<String, Object> queryName) {
+        return userMapper.findUserLogByQueryName(queryName);
+    }
+
+    /**
+     * 获取日志总数
+     * @return
+     */
+    @Override
+    public Long countUserLog() {
+        return userMapper.countUserLog();
+    }
+
+    @Override
+    public void saveUserLog(UserLog userLog) {
+        userMapper.saveUserLog(userLog);
+    }
+
+    /**
+     * 重置密码
+     * @param userId
+     */
+    @Override
+    public void resetPasswordByUserId(Integer userId) {
+
+        User user = userMapper.findUserById(userId);
+        if(user==null){
+            throw new ServiceException("用户被删除或者不存在");
+        }
+        user.setPassword("666666");
+        userMapper.update(user);
     }
 }
