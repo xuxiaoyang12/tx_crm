@@ -47,6 +47,7 @@
     <select id="findUserLogByQueryName" resultType="com.kaishengit.pojo.UserLog">
         select t_user_log.*,t_user.user_name as 'user.userName' from t_user_log
         left join t_user on t_user.id = t_user_log.user_id
+        limit ${start},${length}
     </select>
     <select id="countUserLog" resultType="java.lang.Long">
         select count(*) from t_user_log
