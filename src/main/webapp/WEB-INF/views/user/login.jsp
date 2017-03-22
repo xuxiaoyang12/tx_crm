@@ -47,10 +47,8 @@
                     <SPAN style="float: right;">
                     <A style="color: rgb(204, 204, 204); margin-right: 10px;"
                        href="#">注册</A>
-                        <button id="subBtn" type="submit">
-                             <A style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
+                             <A id="subBtn" style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
                                >登录</A>
-                        </button>
 
                </SPAN>
                 </P>
@@ -91,9 +89,9 @@
             $("#right_hand").attr("class","initial_right_hand");
             $("#right_hand").attr("style","right:-112px;top:-12px");
         });
-       /* $("#subBtn").click(function () {
-            $("#subForm").submit;
-        })*/
+        $("#subBtn").click(function () {
+            $("#subForm").submit();
+        })
     });
 </SCRIPT>
 </BODY>
