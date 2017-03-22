@@ -12,7 +12,7 @@
 
 
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<TITLE>登录页面</TITLE>
+<TITLE>QingSword CRM</TITLE>
 <link rel="stylesheet" href="/static/login/style.css">
 <META name="GENERATOR" content="MSHTML 11.00.9600.17496"></HEAD>
 <BODY>

@@ -126,6 +126,8 @@
               url: 'http://up-z1.qiniu.com/',
               params:{"token":"${token}"},
               fileKey:'file'
+
+
           }
       });
         //提交表单

@@ -7,16 +7,22 @@ import com.kaishengit.pojo.Notice;
 import com.kaishengit.pojo.User;
 import com.kaishengit.service.NoticeService;
 import com.kaishengit.util.ShiroUtils;
+import com.qiniu.util.Auth;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.w3c.dom.html.HTMLModElement;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +33,17 @@ import java.util.Map;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
+
+    @Value("${filePath}")
+    private String filePath;
+    @Value("${qiniu.ak}")
+    private String ak;
+    @Value("${qiniu.sk}")
+    private String sk;
+    @Value("${qiniu.bucket}")
+    private String bucket;
+    @Value("${qiniu.domain}")
+    private String url;
 
     @Autowired
     private NoticeService noticeService;
@@ -45,7 +62,11 @@ public class NoticeController {
      * 新增公告
      */
     @RequestMapping("/new")
-    public String newNotice() {
+    public String newNotice(Model model) {
+        //获取文件长传的token
+        Auth auth = Auth.create(ak,sk);
+        String token =auth.uploadToken(bucket);
+        model.addAttribute("token",token);
 
         return "notice/new";
     }
@@ -98,6 +119,30 @@ public class NoticeController {
         model.addAttribute("notice",notice);
 
         return "notice/detail";
+    }
+
+    //图片上传
+    @RequestMapping(value = "/upload",method = RequestMethod.POST)
+    @ResponseBody
+    public String upload (MultipartFile file) throws IOException {
+
+        //保存文件
+        String sourceName = file.getName();
+        String contentType = file.getContentType();
+        String originalName = file.getOriginalFilename();
+        System.out.println(sourceName+""+contentType);
+        System.out.println(originalName);
+
+        //获取输入流
+        InputStream inputStream = file.getInputStream();
+        OutputStream outputStream = new FileOutputStream(new File(filePath+originalName));
+
+        IOUtils.copy(inputStream,outputStream);
+        outputStream.flush();
+        outputStream.close();
+        inputStream.close();
+        return "true";
+
     }
 
 }
