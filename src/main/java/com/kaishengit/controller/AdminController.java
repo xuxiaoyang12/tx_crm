@@ -51,17 +51,22 @@ public class AdminController {
         String start = request.getParameter("start");
         String length = request.getParameter("length");
 
+        //搜索功能
+        String search = request.getParameter("search[value]");
+
         Map<String,Object> queryName = Maps.newHashMap();
         queryName.put("start",start);
         queryName.put("length",length);
+        queryName.put("search",search);
 
         //通过参数查询 用户列表
         List<User> userList = userService.findAllByQueryName(queryName);
 
         //查询用户总数量
         Long count = userService.countAll();
+        Long countFilter = userService.countFilter(queryName);
 
-        return new DataBaseResult(draw,count,count,userList);
+        return new DataBaseResult(draw,count,countFilter,userList);
 
     }
 

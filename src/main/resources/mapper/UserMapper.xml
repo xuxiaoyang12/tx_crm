@@ -25,6 +25,11 @@
     <select id="findAllByQueryName" resultType="com.kaishengit.pojo.User">
         select t_user.*,t_role.id As 'role.id',t_role.role_name as 'role.roleName' from t_user
         left join t_role on t_role.id = t_user.role_id
+        <where>
+            <if test="search != null and search != ''">
+                and t_user.user_name like concat('%',#{search},'%')
+            </if>
+        </where>
         order by id ASC
         limit ${start},${length}
     </select>
@@ -51,6 +56,14 @@
     </select>
     <select id="countUserLog" resultType="java.lang.Long">
         select count(*) from t_user_log
+    </select>
+    <select id="countFilter" resultType="java.lang.Long">
+         select count(*) from t_user
+        <where>
+            <if test="search != null and search != ''">
+                and t_user.user_name like concat('%',#{search},'%')
+            </if>
+        </where>
     </select>
     <resultMap id="userMap" type="User">
         <id column="id" property="id"/>

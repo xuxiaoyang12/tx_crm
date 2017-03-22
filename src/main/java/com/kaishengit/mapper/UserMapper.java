@@ -38,4 +38,5 @@ public interface UserMapper {
     void saveUserLog(UserLog userLog);
 
 
+    Long countFilter(Map<String, Object> queryName);
 }

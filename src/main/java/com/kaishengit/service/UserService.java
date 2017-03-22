@@ -37,4 +37,6 @@ public interface UserService {
     void saveUserLog(UserLog userLog);
 
     void resetPasswordByUserId(Integer userId);
+
+    Long countFilter(Map<String, Object> queryName);
 }

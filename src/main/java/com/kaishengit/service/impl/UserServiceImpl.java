@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> findAllByQueryName(Map<String, Object> queryName) {
+
         return userMapper.findAllByQueryName(queryName);
        // return userMapper.findAll(queryName);
     }
@@ -125,5 +126,10 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword("666666");
         userMapper.update(user);
+    }
+
+    @Override
+    public Long countFilter(Map<String, Object> queryName) {
+        return userMapper.countFilter(queryName);
     }
 }
