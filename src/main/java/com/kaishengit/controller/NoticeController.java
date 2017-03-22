@@ -8,6 +8,7 @@ import com.kaishengit.pojo.User;
 import com.kaishengit.service.NoticeService;
 import com.kaishengit.util.ShiroUtils;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -65,9 +66,14 @@ public class NoticeController {
     public String newNotice(Model model) {
         //获取文件长传的token
         Auth auth = Auth.create(ak,sk);
-        String token =auth.uploadToken(bucket);
-        model.addAttribute("token",token);
+        //String token =auth.uploadToken(bucket);
+        StringMap stringMap = new StringMap();
+        //给七妞云制定返回的东西
+       // "{ \"success\": true,\"file_path\": \""+Config.get("qiniu.domain")+"${key}\"}"
+        stringMap.put("returnBody","{\"success\":true,\"file_path\":\""+url+"${key}\"}");
+        String token = auth.uploadToken(bucket,null,3600,stringMap);
 
+        model.addAttribute("token",token);
         return "notice/new";
     }
 
