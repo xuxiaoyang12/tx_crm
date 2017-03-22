@@ -11,12 +11,25 @@ public class Sales {
     private Integer id;
     private String name;
     private Float price;
-    private Integer costomerId;
-    private String costomerName;
+    private Integer customerId;
+    private String customerName;
     private String userName;
     private Timestamp createTime;
     private Timestamp lastTime;
     private String progress;
+    private Integer userId;
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getId() {
         return id;
@@ -42,20 +55,20 @@ public class Sales {
         this.price = price;
     }
 
-    public Integer getCostomerId() {
-        return costomerId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCostomerId(Integer costomerId) {
-        this.costomerId = costomerId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public String getCostomerName() {
-        return costomerName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCostomerName(String costomerName) {
-        this.costomerName = costomerName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getUserName() {
@@ -70,9 +83,7 @@ public class Sales {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
+
 
     public Timestamp getLastTime() {
         return lastTime;
