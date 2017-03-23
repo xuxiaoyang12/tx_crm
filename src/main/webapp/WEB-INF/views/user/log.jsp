@@ -89,6 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="/static/plugins/datatables/js/jquery.dataTables.js"></script>
 <script src="/static/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+<script src="/static/plugins/moment/moment.min.js"></script>
 
 <script>
 
@@ -106,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     return ""+row.user.userName+"";
                 }},
                 {"data":"loginIp"},
-                {"data":"loginTime"}
+                {"data":'loginTime'}
             ],
             "language": { //定义中文
                 "search": "请输入书籍名称:",

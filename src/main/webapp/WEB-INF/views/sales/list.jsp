@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="box-header">
                     <h4>机会明细列表</h4>
                     <div class="box-tools">
-                        <button class="btn btn-primary btn-xs" id="addSales"><i class="fa fa-plus">新增机会</i></button>
+                        <a href="javascript:;"  class="btn btn-primary btn-xs" id="addSales"><i class="fa fa-plus">新增机会</i></a>
                     </div>
                 </div>
                 <div class="box-body">
